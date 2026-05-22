@@ -5,8 +5,7 @@ from typing import List, Optional, Dict, Any
 import os
 import json
 import PyPDF2
-from mistralai.client import MistralClient
-from mistralai.models.chat_completion import ChatMessage
+from mistralai.client import Mistral
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -26,7 +25,7 @@ app.add_middleware(
 
 MISTRAL_API_KEY = os.environ.get("MISTRAL_API_KEY", "")
 try:
-    client = MistralClient(api_key=MISTRAL_API_KEY)
+    client = Mistral(api_key=MISTRAL_API_KEY)
 except Exception:
     client = None
 
@@ -182,18 +181,18 @@ async def chat(request: ChatRequest):
 
     # Reconstruct history from context if available
     messages = [
-        ChatMessage(role="system", content=SYSTEM_PROMPT)
+        {"role": "system", "content": SYSTEM_PROMPT}
     ]
     
     history = request.context.get("history", [])
     for msg in history:
-        messages.append(ChatMessage(role=msg["role"], content=msg["content"]))
+        messages.append({"role": msg["role"], "content": msg["content"]})
         
-    messages.append(ChatMessage(role="user", content=request.message))
+    messages.append({"role": "user", "content": request.message})
     
     try:
-        chat_response = client.chat(
-            model="mistral-large-latest",
+        chat_response = client.chat.complete(
+            model="mistral-small",
             messages=messages
         )
         reply = chat_response.choices[0].message.content
@@ -241,12 +240,12 @@ async def generate_roadmap(request: RoadmapRequest):
         context_str = json.dumps(request.student_context)
         
         messages = [
-            ChatMessage(role="system", content=BLOCK2_SYSTEM_PROMPT),
-            ChatMessage(role="user", content=f"Here is the Block 1 output:\n{context_str}")
+            {"role": "system", "content": BLOCK2_SYSTEM_PROMPT},
+            {"role": "user", "content": f"Here is the Block 1 output:\n{context_str}"}
         ]
         
-        chat_response = client.chat(
-            model="mistral-large-latest",
+        chat_response = client.chat.complete(
+            model="mistral-small",
             messages=messages
         )
         
@@ -342,12 +341,12 @@ async def generate_projects(request: ProjectsRequest):
         context_str = json.dumps(request.roadmap_context)
         
         messages = [
-            ChatMessage(role="system", content=BLOCK3_SYSTEM_PROMPT),
-            ChatMessage(role="user", content=f"Here is the Block 2 output:\n{context_str}")
+            {"role": "system", "content": BLOCK3_SYSTEM_PROMPT},
+            {"role": "user", "content": f"Here is the Block 2 output:\n{context_str}"}
         ]
         
-        chat_response = client.chat(
-            model="mistral-large-latest",
+        chat_response = client.chat.complete(
+            model="mistral-small",
             messages=messages
         )
         
