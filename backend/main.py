@@ -14,7 +14,8 @@ load_dotenv()
 app = FastAPI(title="Student Career Roadmap API - Block 1")
 
 # Configure CORS
-ALLOWED_ORIGINS = os.environ.get("ALLOWED_ORIGINS", "*").split(",")
+FRONTEND_URL = os.environ.get("FRONTEND_URL", "http://localhost:5173")
+ALLOWED_ORIGINS = [url.strip() for url in FRONTEND_URL.split(",") if url.strip()]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=ALLOWED_ORIGINS,
