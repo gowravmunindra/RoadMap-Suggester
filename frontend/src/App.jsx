@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+import LandingPage from './components/LandingPage';
 import ChatInterface from './components/ChatInterface';
 import './index.css';
 
 function App() {
+  const [view, setView] = useState('landing'); // 'landing' | 'app'
+
+  if (view === 'landing') {
+    return <LandingPage onLaunch={() => setView('app')} />;
+  }
+
   return (
     <>
       {/* Fixed background — stays put, never scrolls, glows don't cause scrollbars */}
@@ -34,7 +41,7 @@ function App() {
           minHeight: '480px',
           maxHeight: '800px',
         }}>
-          <ChatInterface />
+          <ChatInterface onBackToHome={() => setView('landing')} />
         </div>
       </div>
     </>

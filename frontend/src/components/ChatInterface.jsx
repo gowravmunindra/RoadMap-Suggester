@@ -201,7 +201,7 @@ function Spinner({ text }) {
 /* ══════════════════════════════
    Main ChatInterface component
    ══════════════════════════════ */
-export default function ChatInterface() {
+export default function ChatInterface({ onBackToHome }) {
   const [tab, setTab] = useState('profile');
   const [roadmap, setRoadmap] = useState(null);
   const [projects, setProjects] = useState(null);
@@ -248,12 +248,25 @@ export default function ChatInterface() {
 
       {/* ── Header ── */}
       <div className="px-5 py-4 border-b border-white/10 bg-gradient-to-r from-amber-950/20 to-orange-950/20 shrink-0 flex items-center justify-between gap-4">
-        <div>
-          <h1 className="text-lg font-bold bg-gradient-to-r from-yellow-400 via-amber-300 to-rose-400 bg-clip-text text-transparent flex items-center gap-2">
-            <svg className="w-5 h-5 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-            AI Career Roadmap Builder
-          </h1>
-          <p className="text-xs text-slate-400 mt-0.5">Personalized learning path, skill gap analysis &amp; portfolio projects</p>
+        <div className="flex items-center gap-3">
+          {onBackToHome && (
+            <button 
+              onClick={onBackToHome}
+              className="p-2 hover:bg-white/5 border border-transparent hover:border-white/10 rounded-xl text-slate-400 hover:text-white transition-all active:scale-90 shrink-0"
+              title="Back to Landing Page"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg>
+            </button>
+          )}
+          <div>
+            <h1 className="text-lg font-bold bg-gradient-to-r from-yellow-400 via-amber-300 to-rose-400 bg-clip-text text-transparent flex items-center gap-2">
+              <svg className="w-5 h-5 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              AI Career Roadmap Builder
+            </h1>
+            <p className="text-xs text-slate-400 mt-0.5">Personalized learning path, skill gap analysis &amp; portfolio projects</p>
+          </div>
         </div>
         {/* Export PDF */}
         {canExport && (
