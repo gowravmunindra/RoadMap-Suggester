@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 
 const FEATURES = [
   {
-    title: 'Interactive Profile Onboarding',
-    description: 'Provide your degree, current academic status, career aspirations, skills, and learning availability. The system captures your exact parameters to formulate a personalized plan.',
+    title: 'Profile Onboarding',
+    description: 'Enter your degree, year, learning speed, and target career role to tailor every generated landmark to your personal schedule.',
     icon: (
       <svg className="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -12,7 +12,7 @@ const FEATURES = [
   },
   {
     title: 'PDF Resume Parser',
-    description: 'Upload your existing tech resume. The FastAPI backend extracts raw text using PyPDF2, allowing the AI to auto-detect your current strengths, projects, and actual skills.',
+    description: 'Upload your PDF resume. The FastAPI backend extracts text using PyPDF2 to auto-detect current skills and existing projects.',
     icon: (
       <svg className="w-6 h-6 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -20,8 +20,8 @@ const FEATURES = [
     )
   },
   {
-    title: 'Skill Gap Cards',
-    description: 'Get an immediate comparative breakdown showing your Current Strengths, Missing Skills, and Priority Skills in clear side-by-side cards to focus your efforts.',
+    title: 'Skill Gap Diagnostics',
+    description: 'Receive side-by-side comparative grids mapping your Current Strengths, Missing Skills, and Priority Skills to learn.',
     icon: (
       <svg className="w-6 h-6 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
@@ -29,8 +29,8 @@ const FEATURES = [
     )
   },
   {
-    title: '4 Connected Portfolio Projects',
-    description: 'The generator designs 4 consecutive projects where each project dynamically builds upon the codebase, features, and technical complexity of the previous one.',
+    title: '4 Progressive Projects',
+    description: 'Get four connected project definitions designed to stack codebase complexity, where each project builds directly on the previous one.',
     icon: (
       <svg className="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
@@ -42,50 +42,50 @@ const FEATURES = [
 const PREVIEW_STEPS = [
   {
     id: 1,
-    title: 'Step 1: Chat-Based Profile Setup',
-    duration: 'Block 1 Onboarding',
-    objective: 'Gather academic degree, current skills, interests, and parse your resume.',
-    details: 'Interact with the profile wizard to set your timeline and learning preferences. Option to upload a PDF resume for automated skill extraction.'
+    title: '1. Profile Wizard & PDF Resume Input',
+    duration: 'Block 1',
+    objective: 'Enter your background parameters and upload an optional resume.',
+    details: 'The wizard collects academic year, target role, and study preferences. Uploaded PDF resumes are parsed instantly in the backend to auto-extract your skills.'
   },
   {
     id: 2,
-    title: 'Step 2: Three-Card Skill Gap Analysis',
-    duration: 'Block 2 Diagnostic',
-    objective: 'Generate side-by-side comparative cards indicating career readiness.',
-    details: 'Review three structured lists mapping your Current Strengths, Missing Skills, and Priority Skills relative to your target industry standard.'
+    title: '2. Three-Card Skill Gap Diagnostic',
+    duration: 'Block 2',
+    objective: 'Identify missing technical requirements.',
+    details: 'Generates three clean cards mapping Current Strengths, Missing Skills, and Priority Skills so you see exactly what to focus on.'
   },
   {
     id: 3,
-    title: 'Step 3: Milestone Learning Roadmap',
-    duration: 'Block 2 Planning',
-    objective: 'Create customizable checkpoints with detailed outcomes.',
-    details: 'Receive an optimized timeline of milestones detailing exactly what skills to learn, practical goals to pursue, and the expected learning outcomes.'
+    title: '3. Milestone-Based Learning Path',
+    duration: 'Block 2',
+    objective: 'Display learning landmarks with timeline guidance.',
+    details: 'View milestone roadmaps detailing the exact skills to learn, practical goals, and targets tailored to your timeline.'
   },
   {
     id: 4,
-    title: 'Step 4: 4-Stage Progressive Portfolio Pipeline',
-    duration: 'Block 3 Portfolio',
-    objective: 'Generate four projects that stack on top of each other gradually.',
-    details: 'Get four connected project definitions with specified difficulties, objectives, core features, key skills, and an upgrade path to the next phase.'
+    title: '4. Four Connected Progressive Projects',
+    duration: 'Block 3',
+    objective: 'Generate four sequential portfolio architectures.',
+    details: 'Receive four project ideas that scale gradually. Each project directly upgrades the features and database design of the previous one.'
   },
   {
     id: 5,
-    title: 'Step 5: High-Fidelity PDF Export',
-    duration: 'Export Feature',
-    objective: 'Export your career path and projects into a print-ready PDF layout.',
-    details: 'Instantly download your dynamic syllabus, milestones, gap analysis cards, and progressive project architectures formatted for physical printing or digital sharing.'
+    title: '5. High-Fidelity PDF Document Export',
+    duration: 'Export',
+    objective: 'Format the entire roadmap for single-click printing.',
+    details: 'Outputs a beautifully styled layout containing your full diagnostic gaps, learning timeline, and portfolio project stack ready to print or save.'
   }
 ];
 
 const USE_CASES = [
   {
-    benefit: "Structured Project Progression",
-    details: "Helps you exit 'tutorial hell' by directing you to build exactly 4 projects that expand upon one another sequentially rather than building scattered, simple prototypes.",
+    benefit: "Avoid Tutorial Hell",
+    details: "Build 4 connected projects that build on each other, rather than starting scattered, disconnected prototypes.",
     icon: "🚀"
   },
   {
-    benefit: "Direct Custom Context Alignment",
-    details: "Your generated syllabus and milestone guides are directly mapped from your time availability, degree, current tech year, and personal learning preferences.",
+    benefit: "True Personalized Scope",
+    details: "Timeline landmarks and practice targets are directly aligned to your study hours, target domain, and skills.",
     icon: "🎯"
   }
 ];
@@ -143,21 +143,21 @@ export default function LandingPage({ onLaunch }) {
                 <circle className="opacity-25" cx="12" cy="12" r="10" strokeWidth="4" />
                 <path className="opacity-75" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
               </svg>
-              Verified FastAPI & React Stack
+              FastAPI & React Integration Stack
             </div>
 
-            {/* Main Headline */}
+            {/* Main Headline - Carrier of details, informative, punchy */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] mb-6">
-              Don't just learn. <br />
+              Bridge Skill Gaps with <br />
               <span className="bg-gradient-to-r from-yellow-400 via-amber-300 to-rose-400 bg-clip-text text-transparent">
-                Map your career landmarks
+                Dynamic Career Roadmaps
               </span> <br />
-              with verified AI precision.
+              & Sequential Portfolio Projects.
             </h1>
 
-            {/* Subtext */}
+            {/* Subtext - Shorter, less generic, more details */}
             <p className="text-base sm:text-lg text-slate-400 max-w-2xl mb-8 leading-relaxed">
-              Ditch generic, disorganized tutorials. This builder captures your academic background, parses your PDF resume, conducts a diagnostic skill gap analysis, and maps out a milestone syllabus paired with four sequential, interconnected portfolio projects.
+              Upload your PDF resume to auto-detect skills. Receive a milestone learning schedule mapping Current Strengths, Missing Skills, and 4 interconnected portfolio projects that stack technical complexity.
             </p>
 
             {/* CTA Group */}
@@ -176,7 +176,7 @@ export default function LandingPage({ onLaunch }) {
                 href="#preview" 
                 className="px-6 py-4 rounded-2xl border border-white/10 hover:border-white/20 bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-all text-center font-medium text-sm"
               >
-                Explore Workflow Flow
+                Explore Workflow
               </a>
             </div>
 
@@ -184,15 +184,15 @@ export default function LandingPage({ onLaunch }) {
             <div className="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-white/5 w-full">
               <div>
                 <p className="text-2xl font-black text-white">3-Block</p>
-                <p className="text-xs text-slate-500 uppercase tracking-wider font-semibold mt-0.5">Workflow Engine</p>
+                <p className="text-xs text-slate-500 uppercase tracking-wider font-semibold mt-0.5">AI Engine</p>
               </div>
               <div>
-                <p className="text-2xl font-black text-white">4 Connected</p>
+                <p className="text-2xl font-black text-white">4 Stage</p>
                 <p className="text-xs text-slate-500 uppercase tracking-wider font-semibold mt-0.5">Sequential Projects</p>
               </div>
               <div>
                 <p className="text-2xl font-black text-white">PDF</p>
-                <p className="text-xs text-slate-500 uppercase tracking-wider font-semibold mt-0.5">Resume & Print Support</p>
+                <p className="text-xs text-slate-500 uppercase tracking-wider font-semibold mt-0.5">Resume Parser</p>
               </div>
             </div>
           </div>
@@ -209,7 +209,7 @@ export default function LandingPage({ onLaunch }) {
                   <div className="w-2.5 h-2.5 rounded-full bg-yellow-500" />
                   <div className="w-2.5 h-2.5 rounded-full bg-green-500" />
                 </div>
-                <span className="text-[10px] uppercase font-bold tracking-widest text-amber-500 bg-amber-500/10 px-2.5 py-0.5 rounded-full">REAL GENERATION FORMAT</span>
+                <span className="text-[10px] uppercase font-bold tracking-widest text-amber-500 bg-amber-500/10 px-2.5 py-0.5 rounded-full">GENERATION PREVIEW</span>
               </div>
 
               <div className="space-y-4">
@@ -219,7 +219,7 @@ export default function LandingPage({ onLaunch }) {
                 </div>
 
                 <div className="p-3 bg-white/5 border border-white/10 rounded-xl">
-                  <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">SKILL GAP ANALYSIS</p>
+                  <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">DIAGNOSTIC SKILL GAP</p>
                   <div className="flex flex-wrap gap-1 mt-1.5">
                     <span className="text-[10px] px-2 py-0.5 bg-rose-500/20 text-rose-300 rounded border border-rose-500/25">Missing: PostgreSQL</span>
                     <span className="text-[10px] px-2 py-0.5 bg-orange-500/20 text-orange-300 rounded border border-orange-500/25">Priority: Auth API</span>
@@ -228,7 +228,7 @@ export default function LandingPage({ onLaunch }) {
                 </div>
 
                 <div className="pt-2">
-                  <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">PROGRESSIVE PIPELINE EXAMPLE</p>
+                  <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">PROGRESSIVE PORTFOLIO PIPELINE</p>
                   <div className="space-y-2">
                     <div className="flex items-center gap-3">
                       <span className="w-5 h-5 rounded-full bg-amber-500/25 text-amber-400 text-[10px] font-bold flex items-center justify-center">1</span>
@@ -256,13 +256,10 @@ export default function LandingPage({ onLaunch }) {
         <section id="features" className="py-20 border-t border-white/5 relative">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl font-extrabold tracking-tight mb-4">
-              Specifically Engineered for <br />
-              <span className="bg-gradient-to-r from-yellow-400 via-amber-300 to-rose-400 bg-clip-text text-transparent">
-                Systematic Learning Paths
-              </span>
+              Diagnostic Skill Gaps, Onboarding & Connected Projects
             </h2>
             <p className="text-sm sm:text-base text-slate-400">
-              Unlike static blogs or generic syllabus trees, careerpath AI coordinates context, diagnostic assessments, and project pipelines dynamically.
+              A sequential 3-block pipeline designed to analyze parameters, map milestones, and build cohesive portfolio pipelines.
             </p>
           </div>
 
@@ -289,17 +286,17 @@ export default function LandingPage({ onLaunch }) {
             
             {/* Preview Left Detail Box */}
             <div className="lg:col-span-5 text-left flex flex-col items-start">
-              <span className="text-[10px] uppercase font-black tracking-widest text-amber-500 mb-2">APPLICATION PIPELINE FLOW</span>
+              <span className="text-[10px] uppercase font-black tracking-widest text-amber-500 mb-2">5-STAGE APPLICATION PIPELINE</span>
               <h2 className="text-3xl font-extrabold tracking-tight mb-4">
-                How It Works Step-by-Step
+                Interactive Multi-Block Workflow
               </h2>
               <p className="text-sm text-slate-400 mb-6 leading-relaxed">
-                Click on any stage in the sidebar to review the actual processes and capabilities mapped out by careerpath AI.
+                Click each stage in the pipeline list to preview how our backend organizes and generates your personalized assets.
               </p>
 
               <div className="bg-white/5 border border-white/10 p-5 rounded-2xl w-full backdrop-blur-md">
                 <div className="flex items-center justify-between mb-3 border-b border-white/5 pb-2">
-                  <span className="text-xs font-black text-amber-400 uppercase tracking-widest">Active Step Info</span>
+                  <span className="text-xs font-black text-amber-400 uppercase tracking-widest">Active Stage</span>
                   <span className="text-xs font-bold text-slate-400 bg-white/5 px-2.5 py-0.5 rounded-full border border-white/5">{PREVIEW_STEPS[activeStep - 1].duration}</span>
                 </div>
                 <h4 className="text-base font-bold text-white mb-1.5">{PREVIEW_STEPS[activeStep - 1].title}</h4>
